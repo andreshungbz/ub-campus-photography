@@ -6,6 +6,9 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       fontFamily: {
         jetbrains: ['var(--font-jetbrains-mono)'],

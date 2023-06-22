@@ -1,12 +1,12 @@
 import '@styles/globals.css';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 
-// main font
+// fonts
 const inter = Inter({
   subsets: ['latin'],
 });
-
-// supplementary font
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
@@ -20,7 +20,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.className} ${jetbrains.variable}`}>
-      <body>{children}</body>
+      <body className="app">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
