@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         jetbrains: ['var(--font-jetbrains-mono)'],
       },
+      colors: {
+        'ub-purple': '#8D298F',
+        'ub-yellow': '#FEC72D',
+      },
     },
   },
   plugins: [],

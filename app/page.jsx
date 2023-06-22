@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <h1 className=" text-center font-jetbrains text-5xl">
+      <h1 className=" text-center font-jetbrains text-5xl text-ub-purple">
         UB Campus Photography
       </h1>
       <p className="text-center">
