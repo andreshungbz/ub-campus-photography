@@ -5,3 +5,19 @@
 .app {
   @apply mx-auto max-w-4xl p-3;
 }
+
+.nav-section {
+  @apply flex items-center justify-center gap-3;
+}
+
+.primary-btn {
+  @apply border-b-4 border-ub-purple px-6 py-2 font-jetbrains transition-all hover:bg-purple-100;
+}
+
+.secondary-btn {
+  @apply border-b-4 border-ub-purple px-6 py-2 font-jetbrains transition-all hover:bg-purple-100;
+}
+
+.inline-link {
+  @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
+}
