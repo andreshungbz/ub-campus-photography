@@ -21,10 +21,18 @@ const Nav = () => {
   return (
     <nav className="flex flex-col justify-around gap-2 sm:flex-row">
       <div className="nav-section">
-        <Link href="/" className="secondary-btn">
+        <Link
+          href="/"
+          onClick={() => setDropdown(false)}
+          className="secondary-btn"
+        >
           Home
         </Link>
-        <Link href="/about" className="secondary-btn">
+        <Link
+          href="/about"
+          onClick={() => setDropdown(false)}
+          className="secondary-btn"
+        >
           About
         </Link>
       </div>
