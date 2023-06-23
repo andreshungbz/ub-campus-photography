@@ -21,3 +21,11 @@
 .inline-link {
   @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
 }
+
+.gallery {
+  @apply grid grid-cols-1 justify-center gap-5 sm:grid-cols-3;
+}
+
+.image-container {
+  @apply relative h-80 w-full sm:h-64;
+}
