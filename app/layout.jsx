@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.className} ${jetbrains.variable}`}>
       <body className="app">
         <Header />
-        <main>{children}</main>
+        <main className="p-5">{children}</main>
         <Footer />
       </body>
     </html>
