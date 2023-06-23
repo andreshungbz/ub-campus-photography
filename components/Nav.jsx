@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Nav = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
+  const [dropdown, setDropdown] = useState(false);
   return (
     <nav className="flex flex-col justify-around gap-2 sm:flex-row">
       <div className="nav-section">
@@ -16,13 +18,42 @@ const Nav = () => {
       </div>
       <div>
         {isLoggedIn ? (
-          <div className="nav-section">
-            <Link href="/upload" className="primary-btn">
-              Upload
-            </Link>
-            <Link href="/profile" className="primary-btn">
-              Username
-            </Link>
+          <div className="nav-section relative">
+            <button
+              onClick={() => {
+                setDropdown((prev) => !prev);
+              }}
+              className="primary-btn"
+            >
+              username
+            </button>
+            {dropdown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown-link"
+                  onClick={() => setDropdown(false)}
+                >
+                  Profile
+                </Link>
+                <Link
+                  href="/upload"
+                  className="dropdown-link"
+                  onClick={() => setDropdown(false)}
+                >
+                  Upload
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDropdown(false);
+                  }}
+                  className="dropdown-link"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <div className="nav-section">

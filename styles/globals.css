@@ -6,6 +6,8 @@
   @apply mx-auto max-w-4xl p-3;
 }
 
+/* Navigation Bar */
+
 .nav-section {
   @apply flex items-center justify-center gap-3;
 }
@@ -16,6 +18,14 @@
 
 .secondary-btn {
   @apply border-b-4 border-ub-purple px-6 py-2 font-jetbrains transition-all hover:bg-ub-yellow;
+}
+
+.dropdown {
+  @apply absolute inset-auto top-full z-50 mt-3 flex min-w-[180px] flex-col items-center justify-center gap-2 border-2 border-ub-purple bg-white p-2;
+}
+
+.dropdown-link {
+  @apply font-jetbrains text-sm;
 }
 
 .inline-link {
