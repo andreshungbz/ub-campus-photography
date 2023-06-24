@@ -18,21 +18,24 @@ const Nav = () => {
     setUpProviders();
   }, []);
 
+  // set dropdown to false when outside the username button is clicked
+  useEffect(() => {
+    const hideDropdown = () => {
+      if (dropdown) {
+        setDropdown(false);
+      }
+    };
+    window.addEventListener('click', hideDropdown);
+    return () => window.removeEventListener('click', hideDropdown);
+  }, [dropdown]);
+
   return (
     <nav className="flex flex-col justify-around gap-2 sm:flex-row">
       <div className="nav-section">
-        <Link
-          href="/"
-          onClick={() => setDropdown(false)}
-          className="secondary-btn"
-        >
+        <Link href="/" className="secondary-btn">
           Home
         </Link>
-        <Link
-          href="/about"
-          onClick={() => setDropdown(false)}
-          className="secondary-btn"
-        >
+        <Link href="/about" className="secondary-btn">
           About
         </Link>
       </div>
@@ -40,7 +43,8 @@ const Nav = () => {
         {session?.user ? (
           <div className="nav-section relative">
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setDropdown((prev) => !prev);
               }}
               className="primary-btn"
@@ -52,20 +56,27 @@ const Nav = () => {
                 <Link
                   href="/profile"
                   className="dropdown-link"
-                  onClick={() => setDropdown(false)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDropdown(false);
+                  }}
                 >
                   Profile
                 </Link>
                 <Link
                   href="/upload"
                   className="dropdown-link"
-                  onClick={() => setDropdown(false)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDropdown(false);
+                  }}
                 >
                   Upload
                 </Link>
                 <button
                   type="button"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setDropdown(false);
                     signOut();
                   }}
