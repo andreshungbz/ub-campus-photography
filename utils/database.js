@@ -1,4 +1,6 @@
-import mongoose, { mongo } from 'mongoose';
+// Utility Function to Connect to MongoDB Atlas Database
+
+import mongoose from 'mongoose';
 
 let isConnected = false;
 
@@ -8,8 +10,8 @@ export const connectMongoDB = async () => {
     console.log('Connection to MongoDB is already established');
     return;
   }
-
   try {
+    // connect to MongoDB Atlas cluster with connection string
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'ub-campus-photography',
       useNewUrlParser: true,

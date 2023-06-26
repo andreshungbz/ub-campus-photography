@@ -1,3 +1,5 @@
+// About Page
+
 const About = () => {
   return <div>About</div>;
 };

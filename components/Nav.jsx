@@ -1,3 +1,5 @@
+// Navigation Bar Component
+
 'use client';
 
 import Link from 'next/link';
@@ -5,11 +7,16 @@ import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
+  // retrieve session from next-auth, which determines whether a user is logged in or not
   const { data: session } = useSession();
 
+  // state for next-auth authentication providers
   const [providers, setProviders] = useState(null);
+  // state for showing and hiding the dropdown menu for logged in users
   const [dropdown, setDropdown] = useState(false);
 
+  // effect for asynchronously retrieving next-auth authentication providers from /api/auth/[...nextauth]
+  // https://next-auth.js.org/getting-started/client#getproviders
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
@@ -18,7 +25,7 @@ const Nav = () => {
     setUpProviders();
   }, []);
 
-  // set dropdown to false when outside the username button is clicked
+  // effect for hiding the dropdown when anywhere is clicked
   useEffect(() => {
     const hideDropdown = () => {
       if (dropdown) {
@@ -31,6 +38,7 @@ const Nav = () => {
 
   return (
     <nav className="flex flex-col justify-around gap-2 sm:flex-row">
+      {/* common section */}
       <div className="nav-section">
         <Link href="/" className="secondary-btn">
           Home
@@ -39,7 +47,10 @@ const Nav = () => {
           About
         </Link>
       </div>
+      {/* dynamic user section */}
       <div>
+        {/* if a user is logged in */}
+        {/* every button and link here stops event propagation to prevent trigger of window event listener for hiding dropdown */}
         {session?.user ? (
           <div className="nav-section relative">
             <button
@@ -51,6 +62,7 @@ const Nav = () => {
             >
               {session?.user.email}
             </button>
+            {/* dropdown overlay with additional links */}
             {dropdown && (
               <div className="dropdown">
                 <Link
@@ -89,19 +101,19 @@ const Nav = () => {
           </div>
         ) : (
           <div className="nav-section">
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => {
-                    signIn(provider.id);
-                  }}
-                  className="primary-btn"
-                >
-                  Sign in
-                </button>
-              ))}
+            {/* when a user is not logged in */}
+            {/* sign in button for Google authentication */}
+            {providers && (
+              <button
+                type="button"
+                onClick={() => {
+                  signIn(providers.google.id);
+                }}
+                className="primary-btn"
+              >
+                Sign in
+              </button>
+            )}
           </div>
         )}
       </div>

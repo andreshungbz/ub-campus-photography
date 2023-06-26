@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Body */
+
 .app {
   @apply mx-auto max-w-4xl p-3;
+}
+
+.inline-link {
+  @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
 }
 
 /* Navigation Bar */
@@ -28,9 +34,7 @@
   @apply font-jetbrains text-sm;
 }
 
-.inline-link {
-  @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
-}
+/* Photo Gallery */
 
 .gallery {
   @apply grid grid-cols-1 justify-center gap-5 sm:grid-cols-3;

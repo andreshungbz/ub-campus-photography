@@ -1,3 +1,5 @@
+// Photo Gallery Component
+
 import Image from 'next/image';
 
 const Gallery = () => {
@@ -8,6 +10,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -16,6 +19,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -24,6 +28,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -32,6 +37,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -40,6 +46,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -48,6 +55,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -56,6 +64,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -64,6 +73,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
@@ -72,6 +82,7 @@ const Gallery = () => {
           src="/assets/images/placeholder.png"
           alt="University of Belize Campus Photography Logo"
           fill={true}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"
         />
       </div>
