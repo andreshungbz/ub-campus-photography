@@ -2,7 +2,7 @@
 // Imgur API documentation: https://apidocs.imgur.com/
 // file retrieval code adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
 
-export async function POST(req) {
+export const POST = async (req) => {
   try {
     // retrieve form data
     const formData = await req.formData();
@@ -39,4 +39,4 @@ export async function POST(req) {
     console.log(error);
     return new Response('Image Upload Failed', { status: 500 });
   }
-}
+};
