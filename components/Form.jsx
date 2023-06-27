@@ -9,6 +9,8 @@ const Form = () => {
   // create router for redirects https://nextjs.org/docs/app/api-reference/functions/use-router
   const router = useRouter();
 
+  // state for title input
+  const [title, setTitle] = useState('');
   // state for textarea input
   const [description, setDescription] = useState('');
   // state for submitting status
@@ -43,24 +45,47 @@ const Form = () => {
 
   return (
     <section>
-      <h1>Upload a Photo</h1>
+      <h1 className="title">Upload a Photo</h1>
       <form onSubmit={handleInput} ref={formRef} encType="multipart/form-data">
-        <label className="block">
-          <input name="image" type="file" />
+        <label>
+          <div className="mx-auto my-2 w-full border-2 p-3 sm:w-9/12">
+            <input
+              name="image"
+              type="file"
+              accept=".png,.jpg,.jpeg"
+              required
+              className="file-input"
+            />
+          </div>
         </label>
-        <label className="block">
+        <label>
+          <p className="text-center text-sm">Title</p>
+          <textarea
+            name="title"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+            required
+            className="text-input h-10"
+          />
+        </label>
+        <label>
+          <p className="text-center text-sm">Description</p>
           <textarea
             name="description"
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            required
+            className="text-input h-32"
           />
         </label>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="primary-btn block"
+          className="primary-btn mx-auto block"
         >
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>

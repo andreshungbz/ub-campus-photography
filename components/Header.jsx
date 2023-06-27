@@ -5,7 +5,7 @@ import Nav from './Nav';
 
 const Header = () => {
   return (
-    <header className="border-b-4 border-ub-yellow p-3">
+    <header className="border-b-2 border-ub-yellow p-3">
       {/* header image */}
       <Image
         src="/assets/images/placeholder.png"

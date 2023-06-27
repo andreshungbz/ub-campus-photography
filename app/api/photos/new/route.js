@@ -7,7 +7,7 @@ export const POST = async (req) => {
     // retrieve form data
     const formData = await req.formData();
 
-    // validate file to be png or jpeg
+    // server-side file type validation
     const file = formData.get('image');
     const validTypes = ['image/png', 'image/jpeg'];
     if (!validTypes.includes(file.type)) {
@@ -15,7 +15,6 @@ export const POST = async (req) => {
     }
 
     // populate formData values for Imgur
-    formData.append('title', 'Test');
     formData.append('name', file.name);
     formData.append('album', process.env.IMGUR_ALBUM_HASH);
 

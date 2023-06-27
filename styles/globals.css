@@ -8,6 +8,10 @@
   @apply mx-auto max-w-4xl p-3;
 }
 
+.title {
+  @apply my-3 text-center text-4xl font-bold;
+}
+
 .inline-link {
   @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
 }
@@ -27,7 +31,7 @@
 }
 
 .dropdown {
-  @apply absolute inset-auto top-full z-50 mt-3 flex min-w-[180px] flex-col items-center justify-center gap-2 border-2 border-ub-purple bg-white p-2;
+  @apply absolute inset-auto top-full z-50 mt-3 flex min-w-[200px] flex-col items-center justify-center gap-2 border-2 border-ub-purple bg-white p-2;
 }
 
 .dropdown-link {
@@ -42,4 +46,14 @@
 
 .image-container {
   @apply relative h-80 w-full sm:h-64;
+}
+
+/* Form */
+
+.file-input {
+  @apply mx-auto my-2 block text-slate-500 file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:text-violet-700 hover:file:bg-violet-100;
+}
+
+.text-input {
+  @apply mx-auto my-2 block w-full border-2 border-ub-purple p-2 sm:w-9/12;
 }
