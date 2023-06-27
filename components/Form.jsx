@@ -6,11 +6,13 @@ import { useRouter } from 'next/navigation';
 import { useState, useRef } from 'react';
 
 const Form = () => {
-  // create router https://nextjs.org/docs/app/api-reference/functions/use-router
+  // create router for redirects https://nextjs.org/docs/app/api-reference/functions/use-router
   const router = useRouter();
 
   // state for textarea input
   const [description, setDescription] = useState('');
+  // state for submitting status
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // reference to form
   const formRef = useRef(null);
@@ -19,6 +21,7 @@ const Form = () => {
   // adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
   const handleInput = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     // create a FormData object with the input values
     const formData = new FormData(formRef.current);
     try {
@@ -33,15 +36,17 @@ const Form = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <section>
       <h1>Upload a Photo</h1>
-      <form onSubmit={handleInput} ref={formRef}>
+      <form onSubmit={handleInput} ref={formRef} encType="multipart/form-data">
         <label className="block">
-          <input name="photo" type="file" />
+          <input name="image" type="file" />
         </label>
         <label className="block">
           <textarea
@@ -52,8 +57,12 @@ const Form = () => {
             }}
           />
         </label>
-        <button type="submit" className="primary-btn block">
-          Submit
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="primary-btn block"
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </section>
