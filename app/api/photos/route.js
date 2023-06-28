@@ -9,7 +9,9 @@ export const GET = async () => {
   const referer = headersList.get('referer');
   try {
     await connectMongoDB();
-    const photos = await Photo.find({}).populate('uploader');
+    const photos = await Photo.find({})
+      .populate('uploader')
+      .sort({ uploadDate: 'descending' });
     return new Response(JSON.stringify(photos), {
       status: 200,
       // extra headers to make Vercel deployment work
