@@ -35,9 +35,15 @@ const handler = NextAuth({
         });
         // create a new database entry if user does not exist
         if (!user) {
+          // normalize name string
+          const name = profile.name
+            .toLowerCase()
+            .split(' ')
+            .map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+            .join(' ');
           await User.create({
             email: profile.email,
-            username: profile.name.replace(' ', '').toLowerCase(),
+            name: name,
           });
           // feedback log
           console.log(`User account created: ${profile.email}`);
