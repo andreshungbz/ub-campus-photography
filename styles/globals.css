@@ -45,7 +45,7 @@
 }
 
 .image-container {
-  @apply relative h-80 w-full sm:h-64;
+  @apply relative h-80 w-full border-2 border-ub-purple sm:h-64;
 }
 
 /* Form */
