@@ -11,6 +11,7 @@
   "dependencies": {
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.7",
+    "exifreader": "^4.12.1",
     "mongodb": "^5.6.0",
     "mongoose": "^7.3.1",
     "next": "^13.4.5",

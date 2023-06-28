@@ -13,6 +13,8 @@ const Form = () => {
   const [title, setTitle] = useState('');
   // state for textarea input
   const [description, setDescription] = useState('');
+  // state for error messages
+  const [errorMessage, setErrorMessage] = useState('');
   // state for submitting status
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,6 +37,8 @@ const Form = () => {
       if (response.ok) {
         // redirect to home page
         router.push('/');
+      } else if (response.status === 400) {
+        setErrorMessage(response.statusText);
       }
     } catch (error) {
       console.log(error);
@@ -82,6 +86,7 @@ const Form = () => {
             className="text-input h-32"
           />
         </label>
+        <p className="text-center text-red-500">{errorMessage}</p>
         <button
           type="submit"
           disabled={isSubmitting}
