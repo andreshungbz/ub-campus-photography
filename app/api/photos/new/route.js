@@ -6,6 +6,8 @@
 // file retrieval code adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
 
 import ExifReader from 'exifreader';
+import { connectMongoDB } from '@utils/database';
+import Photo from '@models/photo';
 
 export const POST = async (req) => {
   try {
@@ -38,8 +40,6 @@ export const POST = async (req) => {
     const fileArrayBuffer = await file.arrayBuffer();
     const imageTags = ExifReader.load(fileArrayBuffer);
     const cameraModel = imageTags?.Model?.description || 'Unknown';
-    console.log(imageTags);
-    console.log(cameraModel);
 
     // upload image to personal Imgur album and retrieve image link
     // for anonymous non-album upload, change Authorization header to
@@ -51,10 +51,26 @@ export const POST = async (req) => {
       },
       body: formData,
     }).then((data) => data.json());
-
     // extract Imgur link
     const imageLink = response.data.link;
-    console.log(imageLink);
+
+    // upload photo to database
+    await connectMongoDB();
+    const userId = formData.get('userId');
+    const title = formData.get('title');
+    const description = formData.get('description');
+    const photo = await Photo.create({
+      uploader: userId,
+      link: imageLink,
+      title: title,
+      description: description,
+      cameraModel: cameraModel,
+    });
+
+    // overall feedback log
+    console.log(
+      `Photo Saved: id: ${photo._id} | link: ${imageLink} | model: ${cameraModel}`
+    );
 
     return new Response('Success', { status: 201 });
   } catch (error) {

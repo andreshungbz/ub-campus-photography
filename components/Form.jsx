@@ -4,6 +4,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState, useRef } from 'react';
+import { useSession } from 'next-auth/react';
 
 const Form = () => {
   // create router for redirects https://nextjs.org/docs/app/api-reference/functions/use-router
@@ -21,6 +22,9 @@ const Form = () => {
   // reference to form
   const formRef = useRef(null);
 
+  // get user session
+  const { data: session } = useSession();
+
   // handler for populating FormData object and sending to /api/photos/new for upload
   // adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
   const handleInput = async (e) => {
@@ -28,6 +32,8 @@ const Form = () => {
     setIsSubmitting(true);
     // create a FormData object with the input values
     const formData = new FormData(formRef.current);
+    // pass in user id
+    formData.append('userId', session?.user.id);
     try {
       // send data to route handler for upload
       let response = await fetch('/api/photos/new', {
@@ -42,6 +48,7 @@ const Form = () => {
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage('Connection Timeout Error. Try Again');
     } finally {
       setIsSubmitting(false);
     }
