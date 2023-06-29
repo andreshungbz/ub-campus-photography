@@ -66,7 +66,7 @@ const Nav = () => {
             {dropdown && (
               <div className="dropdown">
                 <Link
-                  href="/profile"
+                  href={`/profile/${session?.user.id}`}
                   className="dropdown-link"
                   onClick={(e) => {
                     e.stopPropagation();

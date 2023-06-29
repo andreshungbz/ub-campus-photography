@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const Gallery = () => {
+const Gallery = ({ userId = null }) => {
   // state for populating photos
   const [photos, setPhotos] = useState([]);
 
@@ -15,8 +15,12 @@ const Gallery = () => {
     let ignore = false;
     const fetchPhotos = async () => {
       const response = await fetch('/api/photo');
-      const data = await response.json();
+      let data = await response.json();
+      // for profile pages, filter results
       if (!ignore) {
+        if (userId) {
+          data = data.filter((photo) => userId === photo?.uploader?._id);
+        }
         setPhotos(data);
       }
     };
@@ -25,6 +29,11 @@ const Gallery = () => {
       ignore = true;
     };
   }, []);
+
+  // show message for profile pages when there are no photos
+  if (userId && photos.length === 0) {
+    return <p className="text-center">No photos yet!</p>;
+  }
 
   return (
     <section className="gallery">

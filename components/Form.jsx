@@ -45,10 +45,11 @@ const Form = () => {
         router.push('/');
       } else if (response.status === 400) {
         setErrorMessage(response.statusText);
+      } else {
+        setErrorMessage('Connection Timeout Error. Try Again');
       }
     } catch (error) {
       console.log(error);
-      setErrorMessage('Connection Timeout Error. Try Again');
     } finally {
       setIsSubmitting(false);
     }

@@ -73,7 +73,12 @@ const Photo = ({ id }) => {
             <p className="text-sm">
               {moment(photo.uploadDate).format('DD MMMM YYYY')}
             </p>
-            <p>{photo?.uploader?.name}</p>
+            <Link
+              href={`/profile/${photo?.uploader?._id}`}
+              className="inline-link"
+            >
+              {photo?.uploader?.name}
+            </Link>
             <p>{photo?.uploader?.email}</p>
             <p>
               {photo.cameraModel !== 'Unknown' &&
