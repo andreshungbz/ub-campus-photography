@@ -7,7 +7,7 @@ import Gallery from '@components/Gallery';
 
 const Profile = ({ params }) => {
   // state for storing name
-  const [name, setName] = useState(null);
+  const [user, setUser] = useState(null);
   // state for error messages
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -20,9 +20,8 @@ const Profile = ({ params }) => {
         setErrorMessage(response.statusText);
       }
       const data = await response.json();
-      const name = data.name;
       if (!ignore) {
-        setName(name);
+        setUser(data);
       }
     };
     fetchUser();
@@ -33,8 +32,11 @@ const Profile = ({ params }) => {
 
   return (
     <>
-      <h1 className="title">{name && `${name}'s `}Profile</h1>
-      <p className="text-center text-red-500">{errorMessage}</p>
+      <div className="mb-5">
+        <h1 className="title">{user && `${user.name}'s `}Profile</h1>
+        <p className="text-center text-sm">{user && user.email}</p>
+        <p className="text-center text-red-500">{errorMessage}</p>
+      </div>
       <div>
         <Gallery userId={params.id} />
       </div>
