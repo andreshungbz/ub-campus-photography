@@ -5,10 +5,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 import moment from 'moment';
 
 const Photo = ({ id }) => {
+  // retrieve user
+  const { data: session } = useSession();
+
+  // navigation router
+  const router = useRouter();
+
   // state for retrieving photo
   const [photo, setPhoto] = useState({});
   // state for error messages
@@ -33,9 +41,18 @@ const Photo = ({ id }) => {
     };
   }, [id]);
 
-  useEffect(() => {
-    console.log(photo);
-  });
+  // function for deleting photo
+  const handleDelete = async () => {
+    const confirmation = confirm('Are you sure you want to delete this photo?');
+    if (confirmation) {
+      try {
+        await fetch(`/api/photo/${id}`, { method: 'DELETE' });
+        router.push('/');
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <section>
@@ -51,19 +68,31 @@ const Photo = ({ id }) => {
             sizes="100vw"
             className="h-auto w-full"
           />
-          <div>
-            <h1>{photo.title}</h1>
-            <p>
-              Upload Date: {moment(photo.uploadDate).format('DD MMMM YYYY')}
+          <div className="mt-2 p-2 text-center text-sm">
+            <h1 className="mb-2 text-4xl font-bold">{photo.title}</h1>
+            <p className="text-sm">
+              {moment(photo.uploadDate).format('DD MMMM YYYY')}
             </p>
-            <p>Uploader: {photo?.uploader?.name}</p>
-            <p>Email: {photo?.uploader?.email}</p>
-            <p>{photo.description}</p>
+            <p>{photo?.uploader?.name}</p>
+            <p>{photo?.uploader?.email}</p>
             <p>
               {photo.cameraModel !== 'Unknown' &&
                 `Camera: ${photo.cameraModel}`}
             </p>
+            <br />
+            <p className="text-base">{photo.description}</p>
           </div>
+          {session?.user.id === photo?.uploader?._id && (
+            <div className="text-center">
+              <button
+                type="button"
+                className="text-red-500"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       )}
     </section>

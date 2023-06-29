@@ -12,6 +12,10 @@ const PhotoSchema = new Schema({
     type: String,
     required: [true, 'Link to an image is required.'],
   },
+  hash: {
+    type: String,
+    required: [true, 'Hash is required.'],
+  },
   title: {
     type: String,
     required: [true, 'Image title is required.'],

@@ -51,8 +51,9 @@ export const POST = async (req) => {
       },
       body: formData,
     }).then((data) => data.json());
-    // extract Imgur link
+    // extract Imgur link and hash
     const imageLink = response.data.link;
+    const imageHash = response.data.id;
 
     // upload photo to database
     await connectMongoDB();
@@ -62,6 +63,7 @@ export const POST = async (req) => {
     const photo = await Photo.create({
       uploader: userId,
       link: imageLink,
+      hash: imageHash,
       title: title,
       description: description,
       cameraModel: cameraModel,
