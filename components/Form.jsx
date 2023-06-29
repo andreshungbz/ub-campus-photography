@@ -25,7 +25,7 @@ const Form = () => {
   // get user session
   const { data: session } = useSession();
 
-  // handler for populating FormData object and sending to /api/photos/new for upload
+  // handler for populating FormData object and sending to /api/photo/new for upload
   // adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
   const handleInput = async (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const Form = () => {
     formData.append('userId', session?.user.id);
     try {
       // send data to route handler for upload
-      let response = await fetch('/api/photos/new', {
+      let response = await fetch('/api/photo/new', {
         method: 'POST',
         body: formData,
       });
