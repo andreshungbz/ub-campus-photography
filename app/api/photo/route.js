@@ -21,6 +21,7 @@ export const GET = async () => {
       },
     });
   } catch (error) {
+    console.log(error);
     return new Response('Failed to Fetch Photos', { status: 500 });
   }
 };

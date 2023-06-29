@@ -15,7 +15,7 @@ const Form = () => {
   // state for textarea input
   const [description, setDescription] = useState('');
   // state for error messages
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   // state for submitting status
   const [isSubmitting, setIsSubmitting] = useState(false);
 

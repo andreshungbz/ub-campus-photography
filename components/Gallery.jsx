@@ -31,7 +31,7 @@ const Gallery = () => {
       {photos.map((photo) => {
         return (
           <div key={photo._id} className="image-container">
-            <Link href="/about">
+            <Link href={`/photo/${photo._id}`}>
               <Image
                 src={photo.link}
                 alt={photo.title}
