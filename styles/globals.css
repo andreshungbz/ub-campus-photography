@@ -16,6 +16,10 @@
   @apply px-2 font-jetbrains text-ub-purple transition-all hover:bg-purple-100;
 }
 
+.description-box {
+  @apply mt-2 p-2 text-center text-sm;
+}
+
 /* Navigation Bar */
 
 .nav-section {
@@ -24,6 +28,10 @@
 
 .primary-btn {
   @apply border-b-4 border-ub-purple px-6 py-2 font-jetbrains transition-all hover:bg-ub-yellow;
+}
+
+.delete-btn {
+  @apply border-2 border-red-500 px-3 py-1 text-sm text-red-500 hover:bg-red-100;
 }
 
 .secondary-btn {

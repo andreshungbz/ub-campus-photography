@@ -66,10 +66,10 @@ const Photo = ({ id }) => {
             width={0}
             height={0}
             sizes="100vw"
-            className="h-auto w-full"
+            className="mx-auto h-auto w-min"
           />
-          <div className="mt-2 p-2 text-center text-sm">
-            <h1 className="mb-2 text-4xl font-bold">{photo.title}</h1>
+          <div className="description-box">
+            <h1 className="title">{photo.title}</h1>
             <p className="text-sm">
               {moment(photo.uploadDate).format('DD MMMM YYYY')}
             </p>
@@ -86,7 +86,7 @@ const Photo = ({ id }) => {
             <div className="text-center">
               <button
                 type="button"
-                className="text-red-500"
+                className="delete-btn"
                 onClick={handleDelete}
               >
                 Delete
