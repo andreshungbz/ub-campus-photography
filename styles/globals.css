@@ -17,7 +17,7 @@
 }
 
 .title {
-  @apply my-3 text-center text-2xl font-bold;
+  @apply my-3 text-center text-2xl font-bold capitalize;
 }
 
 .inline-link {
