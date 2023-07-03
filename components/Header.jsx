@@ -8,7 +8,7 @@ const Header = () => {
     <header className="border-b-2 border-ub-yellow p-3">
       {/* header image */}
       <Image
-        src="/assets/images/placeholder.png"
+        src="/assets/images/site-logo.png"
         width={600}
         height={200}
         alt="University of Belize Campus Photography Logo"
