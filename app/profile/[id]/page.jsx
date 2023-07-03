@@ -4,16 +4,16 @@ import Profile from '@components/Profile';
 
 export const generateMetadata = async ({ params }) => {
   const id = params.id;
-  // server-side fetching is possible, but needs a direct URL
-  // therefore i'm opting for just using id for simple deployment
+  // server-side fetching is possible, but needs a direct URL e.g. http://localhost:3000
+  // therefore i'm opting for just using id for simple deployment management on Vercel
   // https://stackoverflow.com/a/76311855
   // https://github.com/vercel/next.js/issues/48344
 
-  // const response = await fetch(`${process.env.URL}/api/photo/${id}`);
-  // const photo = await response.json();
+  // const response = await fetch(`${process.env.URL}/api/profile/${id}`);
+  // const profile = await response.json();
 
   return {
-    title: `Profile ${id}`,
+    title: `Profile ${id}`, // profile.name
     keywords: ['University of Belize', 'Photography', 'Photo'],
     applicationName: 'UB Campus Photography',
   };
