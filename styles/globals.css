@@ -9,11 +9,11 @@
 }
 
 .header {
-  @apply border-b-2 border-ub-yellow-500 p-3;
+  @apply p-3;
 }
 
 .footer {
-  @apply flex justify-center gap-3 border-t-2 border-ub-yellow-500 px-3 pb-3 pt-5 text-center;
+  @apply flex justify-center gap-3 px-3 pb-3 pt-5 text-center;
 }
 
 .title {
@@ -21,11 +21,11 @@
 }
 
 .inline-link {
-  @apply bg-ub-yellow-100 px-2 font-jetbrains text-ub-purple-800 transition-all hover:bg-purple-100;
+  @apply bg-ub-purple-200 px-2 font-jetbrains text-ub-purple-800 transition-all hover:bg-ub-yellow-300;
 }
 
 .description-box {
-  @apply my-5 border-2 border-ub-purple-500 p-2 pb-4 text-center text-sm;
+  @apply my-5 bg-ub-yellow-200 p-2 pb-4 text-center text-sm;
 }
 
 /* Navigation Bar */
@@ -43,7 +43,7 @@
 }
 
 .delete-btn {
-  @apply border-2 border-red-500 px-3 py-1 text-sm text-red-500 hover:bg-red-100;
+  @apply border-2 border-red-400 bg-red-50 px-5 py-1 text-sm text-red-500 hover:bg-red-200;
 }
 
 .dropdown {

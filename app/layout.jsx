@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <Provider>
         <body className="app">
           <Header />
-          <main className="p-5">{children}</main>
+          <main className="bg-ub-yellow-50 p-5">{children}</main>
           <Footer />
         </body>
       </Provider>

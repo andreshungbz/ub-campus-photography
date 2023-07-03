@@ -25,6 +25,7 @@ module.exports = {
           800: '#8D298F',
         },
         'ub-yellow': {
+          50: '#FFFAEB',
           100: '#FFF4D6',
           200: '#FFE9AE',
           300: '#FEDE85',
