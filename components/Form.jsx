@@ -2,9 +2,9 @@
 
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState, useRef } from 'react';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useRef, useState } from 'react';
 
 const Form = () => {
   // create router for redirects https://nextjs.org/docs/app/api-reference/functions/use-router

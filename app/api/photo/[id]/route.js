@@ -1,7 +1,7 @@
 // Route Handlers for Retrieving and Deleting One Photo from Database
 
-import { connectMongoDB } from '@utils/database';
 import Photo from '@models/photo';
+import { connectMongoDB } from '@utils/database';
 
 export const GET = async (request, { params }) => {
   try {

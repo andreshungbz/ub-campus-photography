@@ -1,9 +1,9 @@
 // API Endpoint for Retrieving Random Photo
 
-import { connectMongoDB } from '@utils/database';
-import Photo from '@models/photo';
-
 import { NextResponse } from 'next/server';
+
+import Photo from '@models/photo';
+import { connectMongoDB } from '@utils/database';
 
 export const GET = async () => {
   try {

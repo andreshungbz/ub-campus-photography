@@ -6,8 +6,9 @@
 // file retrieval code adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
 
 import ExifReader from 'exifreader';
-import { connectMongoDB } from '@utils/database';
+
 import Photo from '@models/photo';
+import { connectMongoDB } from '@utils/database';
 
 export const POST = async (req) => {
   try {

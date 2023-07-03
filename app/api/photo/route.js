@@ -1,8 +1,9 @@
 // Route Handler for Retrieving All Photos from Database
 
 import { headers } from 'next/headers';
-import { connectMongoDB } from '@utils/database';
+
 import Photo from '@models/photo';
+import { connectMongoDB } from '@utils/database';
 
 export const GET = async () => {
   const headersList = headers();

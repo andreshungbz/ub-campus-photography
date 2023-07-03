@@ -2,10 +2,10 @@
 
 'use client';
 
+import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 const Nav = () => {
   // navigation router

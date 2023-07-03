@@ -2,11 +2,11 @@
 
 'use client';
 
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 import moment from 'moment';
 
@@ -71,18 +71,16 @@ const Photo = ({ id }) => {
           <div className="description-box">
             <h1 className="title">{photo.title}</h1>
             <p className="text-sm">
-              Uploaded{' '}
               <span className="bg-ub-purple-100 px-2">
-                {moment(photo.uploadDate).format('D MMMM YYYY')}
-              </span>{' '}
-              by{' '}
-              <Link
-                href={`/profile/${photo?.uploader?._id}`}
-                className="inline-link"
-              >
-                {photo?.uploader?.name}
-              </Link>
+                Uploaded {moment(photo.uploadDate).format('D MMMM YYYY')}
+              </span>
             </p>
+            <Link
+              href={`/profile/${photo?.uploader?._id}`}
+              className="inline-link"
+            >
+              {photo?.uploader?.name}
+            </Link>
             <p>
               {photo.cameraModel !== 'Unknown' &&
                 `Camera: ${photo.cameraModel}`}

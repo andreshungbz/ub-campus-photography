@@ -2,8 +2,8 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
 import Gallery from '@components/Gallery';
+import { useEffect, useState } from 'react';
 
 const Profile = ({ params }) => {
   // state for storing name

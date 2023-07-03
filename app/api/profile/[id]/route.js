@@ -1,7 +1,7 @@
 // Route Handler for Retrieving User from Database
 
-import { connectMongoDB } from '@utils/database';
 import User from '@models/user';
+import { connectMongoDB } from '@utils/database';
 
 export const GET = async (request, { params }) => {
   try {
