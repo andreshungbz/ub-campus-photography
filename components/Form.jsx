@@ -94,7 +94,7 @@ const Form = () => {
             className="text-input h-32"
           />
         </label>
-        <p className="text-center text-red-500">{errorMessage}</p>
+        <p className="my-3 text-center text-red-500">{errorMessage}</p>
         <button
           type="submit"
           disabled={isSubmitting}

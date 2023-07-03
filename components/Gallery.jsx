@@ -28,7 +28,7 @@ const Gallery = ({ userId = null }) => {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [userId]);
 
   // show message for profile pages when there are no photos
   if (userId && photos.length === 0) {
@@ -39,8 +39,8 @@ const Gallery = ({ userId = null }) => {
     <section className="gallery">
       {photos.map((photo) => {
         return (
-          <div key={photo._id} className="image-container">
-            <Link href={`/photo/${photo._id}`}>
+          <Link key={photo._id} href={`/photo/${photo._id}`}>
+            <div className="image-container">
               <Image
                 src={photo.link}
                 alt={photo.title}
@@ -48,8 +48,8 @@ const Gallery = ({ userId = null }) => {
                 sizes="(max-width: 768px) 100vw, 45vw"
                 className="object-cover"
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </section>

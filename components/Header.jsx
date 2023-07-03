@@ -6,7 +6,7 @@ import Nav from './Nav';
 
 const Header = () => {
   return (
-    <header className="border-b-2 border-ub-yellow p-3">
+    <header className="header">
       {/* header image */}
       <Link href="/">
         <Image

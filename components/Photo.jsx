@@ -71,15 +71,18 @@ const Photo = ({ id }) => {
           <div className="description-box">
             <h1 className="title">{photo.title}</h1>
             <p className="text-sm">
-              {moment(photo.uploadDate).format('DD MMMM YYYY')}
+              Uploaded{' '}
+              <span className="bg-ub-purple-100 px-2">
+                {moment(photo.uploadDate).format('D MMMM YYYY')}
+              </span>{' '}
+              by{' '}
+              <Link
+                href={`/profile/${photo?.uploader?._id}`}
+                className="inline-link"
+              >
+                {photo?.uploader?.name}
+              </Link>
             </p>
-            <Link
-              href={`/profile/${photo?.uploader?._id}`}
-              className="inline-link"
-            >
-              {photo?.uploader?.name}
-            </Link>
-            <p>{photo?.uploader?.email}</p>
             <p>
               {photo.cameraModel !== 'Unknown' &&
                 `Camera: ${photo.cameraModel}`}
@@ -88,7 +91,7 @@ const Photo = ({ id }) => {
             <p className="text-base">{photo.description}</p>
           </div>
           {session?.user.id === photo?.uploader?._id && (
-            <div className="text-center">
+            <div className="mt-2 text-center">
               <button
                 type="button"
                 className="delete-btn"

@@ -21,14 +21,14 @@ export const POST = async (req) => {
     if (!validTypes.includes(file.type)) {
       return new Response(null, {
         status: 400,
-        statusText: 'Error: Incorrect File Format',
+        statusText: 'Incorrect File Format. Only JPG/JPEG or PNG Accepted.',
       });
     }
     // ensure image size is less than 10 Megabytes (Imgur API image upload file limit)
     if (file.size > 10000000) {
       return new Response(null, {
         status: 400,
-        statusText: 'Error: File Size Too Large',
+        statusText: 'File Size Too Large (Over 10 MB)',
       });
     }
 

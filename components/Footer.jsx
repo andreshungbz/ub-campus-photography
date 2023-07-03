@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center gap-3 border-t-2 border-ub-yellow px-3 pt-5 text-center">
+    <footer className="footer">
       <Link
         href="https://github.com/andreshungbz/ub-campus-photography"
         className="inline-link"

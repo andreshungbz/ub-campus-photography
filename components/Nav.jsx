@@ -3,10 +3,14 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
+  // navigation router
+  const router = useRouter();
+
   // retrieve session from next-auth, which determines whether a user is logged in or not
   const { data: session } = useSession();
 
@@ -46,6 +50,13 @@ const Nav = () => {
         <Link href="/about" className="secondary-btn">
           About
         </Link>
+        <button
+          type="button"
+          className="secondary-btn"
+          onClick={async () => {}}
+        >
+          Random
+        </button>
       </div>
       {/* dynamic user section */}
       <div>
