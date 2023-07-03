@@ -1,46 +1,29 @@
 // Profile Page
 
-'use client';
+import Profile from '@components/Profile';
 
-import Gallery from '@components/Gallery';
-import { useEffect, useState } from 'react';
+export const generateMetadata = async ({ params }) => {
+  const id = params.id;
+  // server-side fetching is possible, but needs a direct URL
+  // therefore i'm opting for just using id for simple deployment
+  // https://stackoverflow.com/a/76311855
+  // https://github.com/vercel/next.js/issues/48344
 
-const Profile = ({ params }) => {
-  // state for storing name
-  const [user, setUser] = useState(null);
-  // state for error messages
-  const [errorMessage, setErrorMessage] = useState(null);
+  // const response = await fetch(`${process.env.URL}/api/photo/${id}`);
+  // const photo = await response.json();
 
-  // effect for fetching name
-  useEffect(() => {
-    let ignore = false;
-    const fetchUser = async () => {
-      const response = await fetch(`/api/profile/${params.id}`);
-      if (!response.ok) {
-        setErrorMessage(response.statusText);
-      }
-      const data = await response.json();
-      if (!ignore) {
-        setUser(data);
-      }
-    };
-    fetchUser();
-    return () => {
-      ignore = true;
-    };
-  }, [params.id]);
+  return {
+    title: `Profile ${id}`,
+    keywords: ['University of Belize', 'Photography', 'Photo'],
+    applicationName: 'UB Campus Photography',
+  };
+};
 
+const ProfilePage = ({ params }) => {
   return (
-    <>
-      <div className="mb-5">
-        <h1 className="title">{user && `${user.name}'s `}Profile</h1>
-        <p className="text-center text-sm">{user && user.email}</p>
-        <p className="text-center text-red-500">{errorMessage}</p>
-      </div>
-      <div>
-        <Gallery userId={params.id} />
-      </div>
-    </>
+    <div>
+      <Profile id={params.id} />
+    </div>
   );
 };
-export default Profile;
+export default ProfilePage;

@@ -4,8 +4,8 @@
 import '@styles/globals.css';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 
-import Header from '@components/Header';
 import Footer from '@components/Footer';
+import Header from '@components/Header';
 import Provider from '@components/Provider';
 
 // main and secondary font definitions
@@ -22,6 +22,9 @@ const jetbrains = JetBrains_Mono({
 // metadata
 export const metadata = {
   title: 'UB Campus Photography',
+  author: 'Andres Hung',
+  keywords: ['University of Belize', 'Photography', 'Photo'],
+  applicationName: 'UB Campus Photography',
   description: 'Share and showcase photographs of the University of Belize',
 };
 
