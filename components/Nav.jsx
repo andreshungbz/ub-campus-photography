@@ -40,6 +40,14 @@ const Nav = () => {
     return () => window.removeEventListener('click', hideDropdown);
   }, [dropdown]);
 
+  // function for retrieving random photo id
+  const fetchRandomPhotoId = async () => {
+    const response = await fetch('/api/photo/random');
+    const data = await response.json();
+    const photoId = data._id;
+    router.push(`/photo/${photoId}`);
+  };
+
   return (
     <nav className="flex flex-col justify-around gap-2 sm:flex-row">
       {/* common section */}
@@ -47,16 +55,16 @@ const Nav = () => {
         <Link href="/" className="secondary-btn">
           Home
         </Link>
-        <Link href="/about" className="secondary-btn">
-          About
-        </Link>
         <button
           type="button"
           className="secondary-btn"
-          onClick={async () => {}}
+          onClick={fetchRandomPhotoId}
         >
           Random
         </button>
+        <Link href="/about" className="secondary-btn">
+          About
+        </Link>
       </div>
       {/* dynamic user section */}
       <div>
