@@ -34,7 +34,6 @@ const Profile = ({ id }) => {
     <>
       <div className="mb-5">
         <h1 className="title">{user && `${user.name}'s `}Profile</h1>
-        <p className="text-center text-sm">{user && user.email}</p>
         <p className="text-center text-red-500">{errorMessage}</p>
       </div>
       <div>
