@@ -29,6 +29,11 @@ const Form = () => {
   // adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
   const handleInput = async (e) => {
     e.preventDefault();
+    // prevent non-signed in users from submitting photos
+    if (!session?.user.id) {
+      setErrorMessage('You are not signed in');
+      return;
+    }
     setIsSubmitting(true);
     // create a FormData object with the input values
     const formData = new FormData(formRef.current);
