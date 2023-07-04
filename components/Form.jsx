@@ -36,13 +36,15 @@ const Form = () => {
     formData.append('userId', session?.user.id);
     try {
       // send data to route handler for upload
-      let response = await fetch('/api/photo/new', {
+      const response = await fetch('/api/photo/new', {
         method: 'POST',
         body: formData,
       });
       if (response.ok) {
-        // redirect to home page
-        router.push('/');
+        // redirect to uploaded photo's page
+        const data = await response.json();
+        const id = data._id;
+        router.push(`/photo/${id}`);
       } else if (response.status === 400) {
         setErrorMessage(response.statusText);
       } else {

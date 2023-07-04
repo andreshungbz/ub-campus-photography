@@ -75,7 +75,7 @@ export const POST = async (req) => {
       `Photo Saved: id: ${photo._id} | link: ${imageLink} | model: ${cameraModel}`
     );
 
-    return new Response('Success', { status: 201 });
+    return new Response(JSON.stringify(photo), { status: 201 });
   } catch (error) {
     console.log(error);
     return new Response('Image Upload Failed', { status: 500 });
