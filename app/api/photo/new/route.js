@@ -4,14 +4,25 @@
 // ExifReader documentation: https://github.com/mattiasw/ExifReader
 
 // file retrieval code adapted from https://medium.com/@_hanglucas/file-upload-in-next-js-app-router-13-4-6d24f2e3d00f
+// next-auth route handler session code adapted from https://dev.to/alishirani/step-by-step-tutorial-on-how-to-use-next-auth-in-nextjs-13-using-route-handlers-2jmc
 
 import ExifReader from 'exifreader';
+
+import { OPTIONS } from 'app/api/auth/[...nextauth]/route.js';
+import { getServerSession } from 'next-auth/next';
+// experimental: https://next-auth.js.org/configuration/nextjs#getServerSession
 
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
 export const POST = async (req) => {
   try {
+    // check session to verify requests
+    const session = await getServerSession(OPTIONS);
+    if (!session) {
+      return new Response('Unauthorized Request', { status: 403 });
+    }
+
     // retrieve form data
     const formData = await req.formData();
 
@@ -71,9 +82,7 @@ export const POST = async (req) => {
     });
 
     // overall feedback log
-    console.log(
-      `Photo Saved: id: ${photo._id} | link: ${imageLink} | model: ${cameraModel}`
-    );
+    console.log(`Photo ${imageLink} saved by user ${session?.user?.email}`);
 
     return new Response(JSON.stringify(photo), { status: 201 });
   } catch (error) {

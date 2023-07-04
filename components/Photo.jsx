@@ -46,10 +46,7 @@ const Photo = ({ id }) => {
     const confirmation = confirm('Are you sure you want to delete this photo?');
     if (confirmation) {
       try {
-        await fetch(`/api/photo/${id}`, {
-          method: 'DELETE',
-          body: session?.user?.id,
-        });
+        await fetch(`/api/photo/${id}`, { method: 'DELETE' });
         router.push('/');
       } catch (error) {
         console.log(error);

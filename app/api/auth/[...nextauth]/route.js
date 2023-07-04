@@ -57,4 +57,13 @@ const handler = NextAuth({
   },
 });
 
+export const OPTIONS = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+};
+
 export { handler as GET, handler as POST };
