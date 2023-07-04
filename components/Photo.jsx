@@ -46,7 +46,10 @@ const Photo = ({ id }) => {
     const confirmation = confirm('Are you sure you want to delete this photo?');
     if (confirmation) {
       try {
-        await fetch(`/api/photo/${id}`, { method: 'DELETE' });
+        await fetch(`/api/photo/${id}`, {
+          method: 'DELETE',
+          body: session?.user?.id,
+        });
         router.push('/');
       } catch (error) {
         console.log(error);
@@ -61,18 +64,18 @@ const Photo = ({ id }) => {
       ) : (
         <div>
           <Image
-            src={photo.link}
-            alt={photo.title}
+            src={photo?.link}
+            alt={photo?.title}
             width={0}
             height={0}
             sizes="100vw"
             className="mx-auto h-auto w-min"
           />
           <div className="description-box">
-            <h1 className="title">{photo.title}</h1>
+            <h1 className="title">{photo?.title}</h1>
             <p className="text-sm">
               <span className="bg-ub-yellow-300 px-2">
-                Uploaded {moment(photo.uploadDate).format('D MMMM YYYY')}
+                Uploaded {moment(photo?.uploadDate).format('D MMMM YYYY')}
               </span>
             </p>
             <Link
@@ -82,11 +85,11 @@ const Photo = ({ id }) => {
               {photo?.uploader?.name}
             </Link>
             <p>
-              {photo.cameraModel !== 'Unknown' &&
-                `Camera: ${photo.cameraModel}`}
+              {photo?.cameraModel !== 'Unknown' &&
+                `Camera: ${photo?.cameraModel}`}
             </p>
             <br />
-            <p className="text-base">{photo.description}</p>
+            <p className="text-base">{photo?.description}</p>
           </div>
           {session?.user.id === photo?.uploader?._id && (
             <div className="mt-2 text-center">
