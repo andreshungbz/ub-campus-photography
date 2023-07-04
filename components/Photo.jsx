@@ -91,17 +91,19 @@ const Photo = ({ id }) => {
             <br />
             <p className="text-base">{photo?.description}</p>
           </div>
-          {session?.user.id === photo?.uploader?._id && (
-            <div className="mt-2 text-center">
-              <button
-                type="button"
-                className="delete-btn"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-            </div>
-          )}
+          {session?.user.id &&
+            photo?.uploader?._id &&
+            session?.user?.id === photo?.uploader?._id && (
+              <div className="mt-2 text-center">
+                <button
+                  type="button"
+                  className="delete-btn"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
         </div>
       )}
     </section>
