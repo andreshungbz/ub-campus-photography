@@ -15,7 +15,7 @@ import { getServerSession } from 'next-auth/next';
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
-export const POST = async (req) => {
+export const POST = async (request) => {
   try {
     // check session to verify requests
     const session = await getServerSession(OPTIONS);
@@ -24,7 +24,7 @@ export const POST = async (req) => {
     }
 
     // retrieve form data
-    const formData = await req.formData();
+    const formData = await request.formData();
 
     // server-side file validation
     const file = formData.get('image');
