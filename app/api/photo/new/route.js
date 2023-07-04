@@ -48,6 +48,12 @@ export const POST = async (request) => {
     formData.append('name', file.name);
     formData.append('album', process.env.IMGUR_ALBUM_HASH);
 
+    // remove whitespace from title and description fields
+    const title = formData.get('title').trim();
+    const description = formData.get('description').trim();
+    formData.set('title', title);
+    formData.set('description', description);
+
     // extract exif data from image using ExifReader
     const fileArrayBuffer = await file.arrayBuffer();
     const imageTags = ExifReader.load(fileArrayBuffer);
@@ -70,8 +76,6 @@ export const POST = async (request) => {
     // upload photo to database
     await connectMongoDB();
     const userId = formData.get('userId');
-    const title = formData.get('title');
-    const description = formData.get('description');
     const photo = await Photo.create({
       uploader: userId,
       link: imageLink,
