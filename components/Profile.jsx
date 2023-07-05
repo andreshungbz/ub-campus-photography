@@ -31,15 +31,17 @@ const Profile = ({ id }) => {
   }, [id]);
 
   return (
-    <>
-      <div className="mb-5">
-        <h1 className="title">{user && `${user.name}'s `}Profile</h1>
-        <p className="text-center text-red-500">{errorMessage}</p>
-      </div>
-      <div>
-        <Gallery userId={id} />
-      </div>
-    </>
+    user && (
+      <>
+        <div className="mb-5">
+          <h1 className="title">{user && `${user.name}'s `}Profile</h1>
+          <p className="text-center text-red-500">{errorMessage}</p>
+        </div>
+        <div>
+          <Gallery userId={id} />
+        </div>
+      </>
+    )
   );
 };
 export default Profile;

@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 const Gallery = ({ userId = null }) => {
   // state for populating photos
   const [photos, setPhotos] = useState([]);
+  // state for finished fetch
+  const [isFetched, setIsFetched] = useState(false);
 
   // effect for fetching all photos
   useEffect(() => {
@@ -22,6 +24,7 @@ const Gallery = ({ userId = null }) => {
           data = data.filter((photo) => userId === photo?.uploader?._id);
         }
         setPhotos(data);
+        setIsFetched(true);
       }
     };
     fetchPhotos();
@@ -31,7 +34,7 @@ const Gallery = ({ userId = null }) => {
   }, [userId]);
 
   // show message for profile pages when there are no photos
-  if (userId && photos.length === 0) {
+  if (userId && photos.length === 0 && isFetched) {
     return <p className="text-center">No photos yet!</p>;
   }
 
