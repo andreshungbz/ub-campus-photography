@@ -20,12 +20,32 @@
   @apply my-3 text-center text-2xl font-bold capitalize;
 }
 
+p {
+  @apply mt-3;
+}
+
 .inline-link {
-  @apply bg-ub-purple-200 px-2 font-jetbrains text-ub-purple-800 transition-all hover:bg-ub-yellow-300;
+  @apply bg-ub-yellow-300 px-2 font-jetbrains text-ub-purple-800 transition-all hover:bg-ub-purple-800 hover:text-ub-yellow-300;
 }
 
 .description-box {
   @apply my-5 bg-ub-yellow-200 p-2 pb-4 text-center text-sm;
+}
+
+.table {
+  @apply w-full table-auto border-collapse border-2 border-ub-yellow-300 bg-ub-yellow-100;
+}
+
+.cell {
+  @apply border-2 border-ub-yellow-300 p-1;
+}
+
+code {
+  @apply bg-ub-purple-100 px-2 font-jetbrains text-sm text-ub-purple-800;
+}
+
+.portrait {
+  @apply mx-auto border-2 border-emerald-400 shadow-md sm:float-left sm:mr-5;
 }
 
 /* Navigation Bar */
