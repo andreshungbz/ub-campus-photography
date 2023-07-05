@@ -72,7 +72,7 @@ const Photo = ({ id }) => {
             <div className="description-box">
               <h1 className="title">{photo?.title}</h1>
               <p className="text-sm">
-                <span className="bg-ub-yellow-300 px-2 font-jetbrains">
+                <span className="bg-ub-purple-200 px-2 font-jetbrains">
                   Uploaded {moment(photo?.uploadDate).format('D MMMM YYYY')}
                 </span>
               </p>
@@ -82,11 +82,9 @@ const Photo = ({ id }) => {
               >
                 {photo?.uploader?.name}
               </Link>
-              <p>
-                {photo?.cameraModel !== 'Unknown' &&
-                  `Camera: ${photo?.cameraModel}`}
-              </p>
-              <br />
+              {photo?.cameraModel !== 'Unknown' && (
+                <p>{`Camera: ${photo?.cameraModel}`}</p>
+              )}
               <p className="text-base">{photo?.description}</p>
             </div>
             {session?.user.id &&

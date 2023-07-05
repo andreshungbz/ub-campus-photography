@@ -128,7 +128,7 @@ const Nav = () => {
                 onClick={() => {
                   signIn(providers.google.id);
                 }}
-                className="primary-btn"
+                className="primary-btn w-full sm:w-max"
               >
                 Sign in
               </button>
