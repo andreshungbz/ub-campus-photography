@@ -49,7 +49,9 @@ export const DELETE = async (request, { params }) => {
       });
 
       // overall feedback log
-      console.log(`Photo ${photoId} deleted by user ${session?.user?.email}`);
+      console.log(
+        `[UB Campus Photography] Photo ${photoId} deleted by user ${session?.user?.email}`
+      );
 
       return new Response('Photo Deleted', { status: 200 });
     } else {

@@ -86,7 +86,9 @@ export const POST = async (request) => {
     });
 
     // overall feedback log
-    console.log(`Photo ${imageLink} saved by user ${session?.user?.email}`);
+    console.log(
+      `[UB Campus Photography] Photo ${photo.id} saved by user ${session?.user?.email}`
+    );
 
     return new Response(JSON.stringify(photo), { status: 201 });
   } catch (error) {
