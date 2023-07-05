@@ -18,7 +18,7 @@ const Photo = ({ id }) => {
   const router = useRouter();
 
   // state for retrieving photo
-  const [photo, setPhoto] = useState({});
+  const [photo, setPhoto] = useState(null);
   // state for error messages
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -59,49 +59,51 @@ const Photo = ({ id }) => {
       {errorMessage ? (
         <p>{errorMessage}</p>
       ) : (
-        <div>
-          <Image
-            src={photo?.link}
-            alt={photo?.title}
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="mx-auto h-auto w-min"
-          />
-          <div className="description-box">
-            <h1 className="title">{photo?.title}</h1>
-            <p className="text-sm">
-              <span className="bg-ub-yellow-300 px-2">
-                Uploaded {moment(photo?.uploadDate).format('D MMMM YYYY')}
-              </span>
-            </p>
-            <Link
-              href={`/profile/${photo?.uploader?._id}`}
-              className="inline-link"
-            >
-              {photo?.uploader?.name}
-            </Link>
-            <p>
-              {photo?.cameraModel !== 'Unknown' &&
-                `Camera: ${photo?.cameraModel}`}
-            </p>
-            <br />
-            <p className="text-base">{photo?.description}</p>
+        photo && (
+          <div>
+            <Image
+              src={photo?.link}
+              alt={photo?.title}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="mx-auto h-auto w-min"
+            />
+            <div className="description-box">
+              <h1 className="title">{photo?.title}</h1>
+              <p className="text-sm">
+                <span className="bg-ub-yellow-300 px-2">
+                  Uploaded {moment(photo?.uploadDate).format('D MMMM YYYY')}
+                </span>
+              </p>
+              <Link
+                href={`/profile/${photo?.uploader?._id}`}
+                className="inline-link"
+              >
+                {photo?.uploader?.name}
+              </Link>
+              <p>
+                {photo?.cameraModel !== 'Unknown' &&
+                  `Camera: ${photo?.cameraModel}`}
+              </p>
+              <br />
+              <p className="text-base">{photo?.description}</p>
+            </div>
+            {session?.user.id &&
+              photo?.uploader?._id &&
+              session?.user?.id === photo?.uploader?._id && (
+                <div className="mt-2 text-center">
+                  <button
+                    type="button"
+                    className="delete-btn"
+                    onClick={handleDelete}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
           </div>
-          {session?.user.id &&
-            photo?.uploader?._id &&
-            session?.user?.id === photo?.uploader?._id && (
-              <div className="mt-2 text-center">
-                <button
-                  type="button"
-                  className="delete-btn"
-                  onClick={handleDelete}
-                >
-                  Delete
-                </button>
-              </div>
-            )}
-        </div>
+        )
       )}
     </section>
   );
