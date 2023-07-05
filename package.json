@@ -1,6 +1,7 @@
 {
   "name": "ub-campus-photography",
   "version": "0.1.0",
+  "author": "Andres Hung <andres.hung@outlook.com>",
   "private": true,
   "scripts": {
     "dev": "next dev",
