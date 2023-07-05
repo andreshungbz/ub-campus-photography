@@ -67,7 +67,7 @@
 /* Form */
 
 .file-input {
-  @apply mx-auto my-2 block text-slate-500 file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:text-violet-700 hover:file:bg-violet-100;
+  @apply mx-auto my-2 block text-slate-800 file:rounded-full file:border-0 file:bg-ub-purple-600 file:px-4 file:py-2 file:text-sm file:text-white hover:file:bg-ub-purple-400;
 }
 
 .text-input {

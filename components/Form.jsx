@@ -67,7 +67,7 @@ const Form = () => {
       <h1 className="title">Upload a Photo</h1>
       <form onSubmit={handleInput} ref={formRef} encType="multipart/form-data">
         <label>
-          <div className="mx-auto my-2 w-full border-2 p-3 sm:w-9/12">
+          <div className="mx-auto my-2 w-full border-2 border-ub-purple-300 bg-ub-purple-100 p-3 sm:w-9/12">
             <input
               name="image"
               type="file"
