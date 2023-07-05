@@ -11,6 +11,12 @@ const Footer = () => {
       >
         GitHub
       </Link>
+      <a
+        href={`mailto:2018118240@ub.edu.bz?subject=Report Photo`}
+        className="inline-link"
+      >
+        Report Photo
+      </a>
     </footer>
   );
 };
