@@ -34,7 +34,7 @@ module.exports = {
         },
       },
       boxShadow: {
-        base: '-3px 3px black',
+        base: '-4px 4px black',
       },
     },
   },
