@@ -7,6 +7,9 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import Provider from '@components/Provider';
+import Loading from './loading';
+
+import { Suspense } from 'react';
 
 // main and secondary font definitions
 const inter = Inter({
@@ -35,7 +38,9 @@ export default function RootLayout({ children }) {
       <Provider>
         <body className="app">
           <Header />
-          <main className="bg-ub-yellow-50 p-5">{children}</main>
+          <Suspense fallback={<Loading />}>
+            <main className="bg-ub-yellow-50 p-5">{children}</main>
+          </Suspense>
           <Footer />
         </body>
       </Provider>
