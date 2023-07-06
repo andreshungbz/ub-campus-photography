@@ -57,6 +57,7 @@ const handler = NextAuth({
   },
 });
 
+// export options for getServerSession in route handlers
 export const OPTIONS = {
   providers: [
     GoogleProvider({
