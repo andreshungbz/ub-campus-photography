@@ -1,6 +1,6 @@
 // Web Application Common Layout
 
-import { Analytics } from '@vercel/analytics';
+import { Analytics } from '@vercel/analytics/react';
 
 // tailwind css global styles and next.js Google variable fonts
 import '@styles/globals.css';
