@@ -42,7 +42,9 @@ const Nav = () => {
 
   // function for retrieving random photo id
   const fetchRandomPhotoId = async () => {
-    const response = await fetch('/api/photo/random');
+    const response = await fetch('/api/photo/random', {
+      next: { revalidate: 0 },
+    });
     const data = await response.json();
     const photoId = data._id;
     router.push(`/photo/${photoId}`);
