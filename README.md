@@ -108,8 +108,9 @@ Returned is a response containing JSON with the following format:
 For hosting and testing this project on your own computer, you can clone, install, and run the project as follows:
 
 1. `git clone https://github.com/andreshungbz/ub-campus-photography.git`
-2. `npm install`
-3. `npm run dev`
+2. `cd ub-campus-photography`
+3. `npm install`
+4. `npm run dev`
 
 You **must** provide your own variables in a `.env` in the root folder containing the following values:
 
