@@ -1,10 +1,13 @@
 # UB Campus Photography
 
+![University of Belize Campus Photography Logo](/public/assets/images/site-logo.png)
+
 UB Campus Photography is a web application showcasing and promoting photographs of the University of Belize campus and activities therein. Users can sign in using their Google account and upload photos, which will be shown in their own profile page. Every photo also has their own page with additional information provided by the uploader.
 
 This project was done by Andres Hung for the 2023 Harvard [CS50x](https://cs50.harvard.edu/x/2023/) Introduction to Computer Science online course.
 
 Video Demonstration: [YouTube link]
+Website Deployment: [Vercel link]
 
 ## Technological Design Choices
 
@@ -123,7 +126,7 @@ The project on Google Cloud Console must be properly configured for OAuth, with 
 
 ## Known Issues
 
-- The Imgur API Access Token has an expiry date of 30 days. It can be easily refreshed but it means that environment variable must be updated as to allow for create and delete operations of images, as the project is dependent on Imgur links for images.
+- The Imgur API Access Token has an expiry date of 30 days. It can be easily refreshed but it means that the environment variable must be updated as to allow for create and delete operations of images, as the project is dependent on Imgur links for images.
 - The free tier of the Imgur API is used in this project, which means that large-scale traffic of the web application can cause that limit to be exceeded, stopping normal functionality.
 - Usage of free tiers in MongoDB Atlas cluster and Vercel deployment may mean that the performance may not be the absolute best (I'm cheap ok).
 - When you delete a photo, if your connection is interrupted midway, the photo will be deleted from the database but not from the Imgur album. However, this problem does not affect the functionality of the web application, as it does not rely on the Imgur album for fetching photos.
