@@ -8,7 +8,7 @@ This project was done by Andres Hung for the 2023 Harvard [CS50x](https://cs50.h
 
 Video Demonstration: [YouTube link]
 
-Website Deployment: [Vercel link]
+Testable Website Deployment: https://ub-campus-photography.vercel.app
 
 ## Technological Design Choices
 
@@ -79,8 +79,8 @@ Below is a list of the folders and files I mainly worked on and a brief explanat
 
 Two routes are available for fetching a specific photo or a random photo from the database. For a specific photo, you can use the database ID obtainable from the photo's page.
 
-- Specific Photo: `[hostname]/api/photo/[id]`
-- Random Photo: `[hostname]/api/photo/random`
+- Specific Photo: `https://ub-campus-photography.vercel.app/api/photo/[id]`
+- Random Photo: `https://ub-campus-photography.vercel.app/api/photo/random`
 
 Returned is a response containing JSON with the following format:
 
