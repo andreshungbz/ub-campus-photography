@@ -1,5 +1,7 @@
 // Web Application Common Layout
 
+import { Analytics } from '@vercel/analytics';
+
 // tailwind css global styles and next.js Google variable fonts
 import '@styles/globals.css';
 import { Inter, JetBrains_Mono } from 'next/font/google';
@@ -42,6 +44,7 @@ export default function RootLayout({ children }) {
             <main className="bg-ub-yellow-50 p-5">{children}</main>
           </Suspense>
           <Footer />
+          <Analytics />
         </body>
       </Provider>
     </html>

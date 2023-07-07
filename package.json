@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.1",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.7",
     "exifreader": "^4.12.1",
