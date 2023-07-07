@@ -132,7 +132,7 @@ The project on Google Cloud Console must be properly configured for OAuth, with 
 - The free tier of the Imgur API is used in this project, which means that large-scale traffic of the web application can cause that limit to be exceeded, stopping normal functionality.
 - Usage of free tiers in MongoDB Atlas cluster and Vercel deployment may mean that the performance may not be the absolute best (I'm cheap ok).
 - When you delete a photo, if your connection is interrupted midway, the photo will be deleted from the database but not from the Imgur album. However, this problem does not affect the functionality of the web application, as it does not rely on the Imgur album for fetching photos.
-- Sometimes you have to refresh the page for the session to appear.
+- Sometimes you have to hard refresh the page for the session or gallery of images to appear.
 - Extra privacy can be implemented for user emails in the API routes.
 
 ## Personal Project Highlights
