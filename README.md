@@ -55,6 +55,7 @@ Below is a list of the folders and files I mainly worked on and a brief explanat
   - `/loading.jsx` - Next.js loading fallback page.
   - `/not-found.jsx` - Next.js 404 page fallback.
   - `/page.jsx` - the home page, corresponding to `/`.
+  - `robots.txt` - basic `robots.txt` for search engine crawlers. No current private routes.
 - `/components` - folder for reusable React components.
   - `/Footer.jsx` - footer component containing links.
   - `/Form.jsx` - form component for uploading photos. sends a request to `/api/photo/new/`.
