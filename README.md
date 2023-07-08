@@ -134,6 +134,7 @@ The project on Google Cloud Console must be properly configured for OAuth, with 
 - Usage of free tiers in MongoDB Atlas cluster and Vercel deployment may mean that the performance may not be the absolute best (I'm cheap ok).
 - When you delete a photo, if your connection is interrupted midway, the photo will be deleted from the database but not from the Imgur album. However, this problem does not affect the functionality of the web application, as it does not rely on the Imgur album for fetching photos.
 - Sometimes you have to hard refresh the page for the session or gallery of images to appear.
+- One time a specific photo page decided to now display on desktop even though it was fine on mobile and working fine before. Deleting the photo and trying to reupload that specific photo failed for some reason.
 - Extra privacy can be implemented for user emails in the API routes.
 
 ## Personal Project Highlights
