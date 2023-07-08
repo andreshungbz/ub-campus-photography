@@ -31,6 +31,7 @@ export const metadata = {
   keywords: ['University of Belize', 'Photography', 'Photo'],
   applicationName: 'UB Campus Photography',
   description: 'Share and showcase photographs of the University of Belize',
+  themeColor: '#8D298F',
 };
 
 export default function RootLayout({ children }) {
