@@ -12,8 +12,6 @@ export const generateMetadata = async ({ params }) => {
 
   return {
     title: `Photo ${id}`, // photo.title
-    keywords: ['University of Belize', 'Photography', 'Photo'],
-    applicationName: 'UB Campus Photography',
   };
 };
 
