@@ -6,7 +6,7 @@ UB Campus Photography is a web application showcasing and promoting photographs 
 
 This project was done by Andres Hung for the 2023 Harvard [CS50x](https://cs50.harvard.edu/x/2023/) Introduction to Computer Science online course.
 
-Video Demonstration: [YouTube link]
+Video Demonstration: https://youtu.be/-s3W5vp3YKs
 
 Testable Website Deployment: https://ub-campus-photography.vercel.app
 
