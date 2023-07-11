@@ -23,4 +23,6 @@ export const GET = async () => {
   }
 };
 
+// use segment-level caching to ensure data is revalidated on every fetch
+// https://nextjs.org/docs/app/building-your-application/data-fetching/caching#segment-level-caching
 export const revalidate = 0;
