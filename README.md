@@ -159,3 +159,9 @@ These are the ideas and features I decided to leave out of this project's scope,
 - The websites [freeCodeCamp](https://www.freecodecamp.org/), [W3schools](https://www.w3schools.com/) and [MDN Web Docs](https://developer.mozilla.org/en-US/) for the great free tutorials, exercises and resources for learning all aspects of web development.
 - This [React 18 tutorial](https://youtu.be/2-crBg6wpp0) by [John Smilga](https://github.com/john-smilga) and this [Next.js 13 tutorial](https://youtu.be/wm5gMKuwSYk?list=LL) by JavaScript Mastery [Adrian Hajdin](https://github.com/adrianhajdin) for the comprehensive and practical video tutorials for the latest in React and Next.js respectively.
 - The [CS50](https://cs50.harvard.edu/x/2023/) course by [David J. Malan](https://cs.harvard.edu/malan/) for laying the computer science foundation for me to be able to learn all the technologies I have until now.
+
+## Attributions
+
+> Camera Favicon Copyright 2020 Twitter, Inc and other contributors  
+> Code licensed under the MIT License: http://opensource.org/licenses/MIT  
+> Graphics licensed under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
