@@ -1,5 +1,8 @@
 // API Endpoint for Retrieving Random Photo
 
+// define User model to prevent MissingSchemaError on first visit
+import User from '@models/user';
+
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
