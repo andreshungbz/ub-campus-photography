@@ -129,7 +129,6 @@ The project on Google Cloud Console must be properly configured for OAuth, with 
 
 ## Known Issues
 
-- Visiting the Vercel deployment sometimes the gallery of photos, session or random button won't work until you refresh the site a few times.
 - Some photos uploaded via the form will return a 500 error for an unknown reason.
 - When you delete a photo, if your connection is interrupted midway, the photo will be deleted from the database but not from the Imgur album. However, this problem does not affect the functionality of the web application, as it does not rely on the Imgur album for fetching photos.
 - The Imgur API Access Token has an expiry date of 30 days. It can be easily refreshed but it means that the environment variable must be updated as to allow for create and delete operations of images, as the project is dependent on Imgur links for images.
