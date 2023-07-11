@@ -48,7 +48,7 @@ const Gallery = ({ userId = null }) => {
                 src={photo.link}
                 alt={photo.title}
                 fill={true}
-                sizes="(max-width: 768px) 100vw, 45vw"
+                sizes="(max-width: 768px) 100vw, 20vw"
                 className="object-cover"
               />
             </div>
