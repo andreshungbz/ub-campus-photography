@@ -2,6 +2,7 @@
 
 'use client';
 
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -11,6 +12,9 @@ const Gallery = ({ userId = null }) => {
   const [photos, setPhotos] = useState([]);
   // state for finished fetch
   const [isFetched, setIsFetched] = useState(false);
+
+  const { data: session } = useSession();
+  console.log(session);
 
   // effect for fetching all photos
   useEffect(() => {
