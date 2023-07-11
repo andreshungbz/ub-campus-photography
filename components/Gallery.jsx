@@ -2,7 +2,6 @@
 
 'use client';
 
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -12,11 +11,6 @@ const Gallery = ({ userId = null }) => {
   const [photos, setPhotos] = useState([]);
   // state for finished fetch
   const [isFetched, setIsFetched] = useState(false);
-
-  // fix: call useSession so that the User schema model is created first before fetching photos
-  // on first visit, fetch can be called before session, causing a MissingSchemaError from MongoDB
-  const { data: session } = useSession();
-  console.log(`Session: ${session?.user?.name}`);
 
   // effect for fetching all photos
   useEffect(() => {

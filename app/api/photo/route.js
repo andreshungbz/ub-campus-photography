@@ -1,5 +1,6 @@
 // Route Handler for Retrieving All Photos from Database
 
+import User from '@models/user';
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
