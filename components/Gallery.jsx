@@ -13,8 +13,10 @@ const Gallery = ({ userId = null }) => {
   // state for finished fetch
   const [isFetched, setIsFetched] = useState(false);
 
+  // fix: call useSession so that the User schema model is created first before fetching photos
+  // on first visit, fetch can be called before session, causing a MissingSchemaError from MongoDB
   const { data: session } = useSession();
-  console.log(session);
+  console.log(`Session: ${session?.user?.name}`);
 
   // effect for fetching all photos
   useEffect(() => {
