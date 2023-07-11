@@ -1,6 +1,8 @@
 // Route Handler for Retrieving All Photos from Database
 
+// define User model to prevent MissingSchemaError on first visit
 import User from '@models/user';
+
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
