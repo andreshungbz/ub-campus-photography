@@ -1,4 +1,4 @@
-// Route Handlers for Retrieving and Deleting One Photo from Database
+// Route Handler and Deleting a Photo from Database
 
 // next-auth route handler session code adapted from https://dev.to/alishirani/step-by-step-tutorial-on-how-to-use-next-auth-in-nextjs-13-using-route-handlers-2jmc
 
@@ -8,22 +8,6 @@ import { getServerSession } from 'next-auth/next';
 
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
-
-export const GET = async (request, { params }) => {
-  try {
-    await connectMongoDB();
-    const photo = await Photo.findById(params.id).populate('uploader');
-    return new Response(JSON.stringify(photo), {
-      status: 200,
-    });
-  } catch (error) {
-    console.log(error);
-    return new Response('Failed to Fetch Photo', {
-      status: 500,
-      statusText: 'Error: Image Does Not Exist.',
-    });
-  }
-};
 
 export const DELETE = async (request, { params }) => {
   try {
