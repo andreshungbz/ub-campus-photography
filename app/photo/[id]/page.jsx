@@ -1,3 +1,5 @@
+// Specific Photo Page
+
 import Delete from '@components/Delete';
 import Image from 'next/image';
 import Link from 'next/link';

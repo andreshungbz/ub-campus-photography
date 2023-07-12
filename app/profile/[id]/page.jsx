@@ -1,6 +1,10 @@
 // Profile Page
 
-import Profile from '@components/Profile';
+import Gallery from '@components/Gallery';
+
+import Photo from '@models/photo';
+import User from '@models/user';
+import { connectMongoDB } from '@utils/database';
 
 export const generateMetadata = async ({ params }) => {
   const id = params.id;
@@ -17,11 +21,24 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-const ProfilePage = ({ params }) => {
+const ProfilePage = async ({ params }) => {
+  let user;
+  try {
+    connectMongoDB();
+    user = await User.findById(params.id);
+  } catch (error) {
+    console.log(error);
+    return <div className="text-center">Profile Not Found</div>;
+  }
   return (
-    <div>
-      <Profile id={params.id} />
-    </div>
+    <>
+      <div className="mb-5">
+        <h1 className="title">{user && `${user?.name}'s `}Profile</h1>
+      </div>
+      <div>
+        <Gallery userId={user?._id} />
+      </div>
+    </>
   );
 };
 export default ProfilePage;
