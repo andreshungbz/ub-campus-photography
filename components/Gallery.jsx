@@ -1,40 +1,29 @@
 // Photo Gallery Component
 
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
-const Gallery = ({ userId = null }) => {
-  // state for populating photos
-  const [photos, setPhotos] = useState([]);
-  // state for finished fetch
-  const [isFetched, setIsFetched] = useState(false);
+import Photo from '@models/photo';
+import User from '@models/user';
+import { connectMongoDB } from '@utils/database';
 
-  // effect for fetching all photos
-  useEffect(() => {
-    let ignore = false;
-    const fetchPhotos = async () => {
-      const response = await fetch('/api/photo');
-      let data = await response.json();
-      // for profile pages, filter results
-      if (!ignore) {
-        if (userId) {
-          data = data.filter((photo) => userId === photo?.uploader?._id);
-        }
-        setPhotos(data);
-        setIsFetched(true);
-      }
-    };
-    fetchPhotos();
-    return () => {
-      ignore = true;
-    };
-  }, [userId]);
+const Gallery = async ({ userId = null }) => {
+  let photos;
+  try {
+    await connectMongoDB();
+    if (userId) {
+      photos = await Photo.find({ uploader: userId }).sort({
+        uploadDate: 'descending',
+      });
+    } else {
+      photos = await Photo.find({}).sort({ uploadDate: 'descending' });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 
   // show message for profile pages when there are no photos
-  if (userId && photos.length === 0 && isFetched) {
+  if (userId && photos.length === 0) {
     return <p className="text-center">No photos yet!</p>;
   }
 
