@@ -6,6 +6,8 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 
+import { revalidate } from '@utils/revalidate';
+
 const Form = () => {
   // create router for redirects https://nextjs.org/docs/app/api-reference/functions/use-router
   const router = useRouter();
@@ -49,6 +51,9 @@ const Form = () => {
         // redirect to uploaded photo's page
         const data = await response.json();
         const id = data._id;
+        // server action for ensuring latest data is refreshed
+        revalidate('/');
+        revalidate('/profile/[id]');
         router.push(`/photo/${id}`);
       } else if (response.status === 400) {
         setErrorMessage(response.statusText);

@@ -5,6 +5,8 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
+import { revalidate } from '@utils/revalidate';
+
 const Delete = ({ photoData }) => {
   // retrieve user
   const { data: session } = useSession();
@@ -20,6 +22,9 @@ const Delete = ({ photoData }) => {
     if (confirmation) {
       try {
         await fetch(`/api/photo/${id}`, { method: 'DELETE' });
+        // server action for ensuring latest data is refreshed
+        revalidate('/');
+        revalidate('/profile/[id]');
         router.push('/');
       } catch (error) {
         console.log(error);
