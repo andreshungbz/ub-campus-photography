@@ -2,22 +2,15 @@
 
 import Gallery from '@components/Gallery';
 
-import Photo from '@models/photo';
 import User from '@models/user';
 import { connectMongoDB } from '@utils/database';
 
 export const generateMetadata = async ({ params }) => {
-  const id = params.id;
-  // server-side fetching is possible, but needs a direct URL e.g. http://localhost:3000
-  // therefore i'm opting for just using id for simple deployment management on Vercel
-  // https://stackoverflow.com/a/76311855
-  // https://github.com/vercel/next.js/issues/48344
-
-  // const response = await fetch(`${process.env.URL}/api/profile/${id}`);
-  // const profile = await response.json();
-
+  await connectMongoDB();
+  const nameQuery = await User.findById(params.id).select('name -_id');
+  const name = nameQuery.name;
   return {
-    title: `Profile ${id}`, // profile.name
+    title: `${name}'s Profile`,
   };
 };
 

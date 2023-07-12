@@ -10,17 +10,11 @@ import { connectMongoDB } from '@utils/database';
 import moment from 'moment';
 
 export const generateMetadata = async ({ params }) => {
-  const id = params.id;
-  // server-side fetching is possible, but needs a direct URL e.g. http://localhost:3000
-  // therefore i'm opting for just using id for simple deployment management on Vercel
-  // https://stackoverflow.com/a/76311855
-  // https://github.com/vercel/next.js/issues/48344
-
-  // const response = await fetch(`${process.env.URL}/api/photo/${id}`);
-  // const photo = await response.json();
-
+  await connectMongoDB();
+  const titleQuery = await Photo.findById(params.id).select('title -_id');
+  const title = titleQuery.title;
   return {
-    title: `Photo ${id}`, // photo.title
+    title: title,
   };
 };
 
@@ -33,7 +27,6 @@ const PhotoDisplay = async ({ params }) => {
     console.log(error);
     return <div className="text-center">Image Not Found</div>;
   }
-
   return (
     photo && (
       <section>
