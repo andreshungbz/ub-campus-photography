@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+// define User model to prevent MissingSchemaError on first visit
+import User from '@models/user';
+
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
