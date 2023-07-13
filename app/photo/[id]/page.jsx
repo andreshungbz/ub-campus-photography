@@ -1,32 +1,40 @@
-// Specific Photo Page
+// Photo Page
 
 import Delete from '@components/Delete';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
 import moment from 'moment';
 
+// dynamically set title metadata
 export const generateMetadata = async ({ params }) => {
-  await connectMongoDB();
-  const titleQuery = await Photo.findById(params.id).select('title -_id');
-  const title = titleQuery.title;
-  return {
-    title: title,
-  };
+  try {
+    await connectMongoDB();
+    const titleQuery = await Photo.findById(params.id).select('title -_id');
+    const title = titleQuery.title;
+    return {
+      title: title,
+    };
+  } catch (error) {
+    return;
+  }
 };
 
-const PhotoDisplay = async ({ params }) => {
+const PhotoPage = async ({ params }) => {
+  // obtain photo from database
   let photo;
   try {
     await connectMongoDB();
     photo = await Photo.findById(params.id).populate('uploader');
   } catch (error) {
-    console.log(error);
-    return <div className="text-center">Image Not Found</div>;
+    // redirect to 404 page if mongoose error
+    notFound();
   }
+
   return (
     photo && (
       <section>
@@ -63,4 +71,4 @@ const PhotoDisplay = async ({ params }) => {
     )
   );
 };
-export default PhotoDisplay;
+export default PhotoPage;
