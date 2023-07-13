@@ -72,5 +72,3 @@ const PhotoPage = async ({ params }) => {
   );
 };
 export default PhotoPage;
-
-export const revalidate = 0;

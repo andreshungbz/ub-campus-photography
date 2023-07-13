@@ -43,5 +43,3 @@ const ProfilePage = async ({ params }) => {
   );
 };
 export default ProfilePage;
-
-export const revalidate = 0;

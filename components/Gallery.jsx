@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { revalidate } from '@utils/revalidate';
+
 // define User model to prevent MissingSchemaError on first visit
 import User from '@models/user';
 
@@ -10,6 +12,8 @@ import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
 const Gallery = async ({ userId = null }) => {
+  revalidate();
+
   // obtain photos from database
   let photos;
   try {
