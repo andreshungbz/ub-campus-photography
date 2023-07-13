@@ -31,6 +31,7 @@ const PhotoPage = async ({ params }) => {
     await connectMongoDB();
     photo = await Photo.findById(params.id).populate('uploader');
   } catch (error) {
+    console.log(error);
     // redirect to 404 page if mongoose error
     notFound();
   }
