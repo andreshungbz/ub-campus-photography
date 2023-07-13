@@ -3,18 +3,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Photo from '@models/photo';
+// define User model to prevent MissingSchemaError on first visit
 import User from '@models/user';
+
+import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
 const Gallery = async ({ userId = null }) => {
+  // obtain photos from database
   let photos;
   try {
     await connectMongoDB();
+    // query user's photos if prop was passed in (profile page)
     if (userId) {
       photos = await Photo.find({ uploader: userId }).sort({
         uploadDate: 'descending',
       });
+      // query all photos
     } else {
       photos = await Photo.find({}).sort({ uploadDate: 'descending' });
     }

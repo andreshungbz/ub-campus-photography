@@ -51,7 +51,7 @@ const Form = () => {
         // redirect to uploaded photo's page
         const data = await response.json();
         const id = data._id;
-        // server action for ensuring latest data is refreshed
+        // server action for ensuring latest data is refreshed on home and profile
         revalidate('/');
         revalidate('/profile/[id]');
         router.push(`/photo/${id}`);

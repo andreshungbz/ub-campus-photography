@@ -1,4 +1,4 @@
-// Photo Component for Displaying Single Photo and its Details
+// Delete Component for Deleting a Photo
 
 'use client';
 
@@ -22,7 +22,7 @@ const Delete = ({ photoData }) => {
     if (confirmation) {
       try {
         await fetch(`/api/photo/${id}`, { method: 'DELETE' });
-        // server action for ensuring latest data is refreshed
+        // server action for ensuring latest data is refreshed on home and profile
         revalidate('/');
         revalidate('/profile/[id]');
         router.push('/');
