@@ -12,7 +12,7 @@ import Photo from '@models/photo';
 import { connectMongoDB } from '@utils/database';
 
 const Gallery = async ({ userId = null }) => {
-  revalidate();
+  revalidate('/photo/[id]');
 
   // obtain photos from database
   let photos;
