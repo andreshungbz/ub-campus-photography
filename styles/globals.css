@@ -95,5 +95,5 @@ code {
 }
 
 .text-input {
-  @apply mx-auto my-2 block w-full border-2 border-ub-purple-800 p-2 sm:w-9/12;
+  @apply mx-auto my-2 block w-full border-2 border-ub-purple-800 p-2 sm:w-9/12 disabled:bg-ub-purple-100;
 }

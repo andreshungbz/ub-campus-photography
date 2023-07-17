@@ -77,6 +77,7 @@ const Form = () => {
               name="image"
               type="file"
               accept=".png,.jpg,.jpeg"
+              disabled={isSubmitting}
               required
               className="file-input"
             />
@@ -90,6 +91,7 @@ const Form = () => {
             onChange={(e) => {
               setTitle(e.target.value);
             }}
+            disabled={isSubmitting}
             required
             className="text-input h-10"
           />
@@ -102,6 +104,7 @@ const Form = () => {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            disabled={isSubmitting}
             required
             className="text-input h-32"
           />
