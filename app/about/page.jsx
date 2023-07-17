@@ -58,7 +58,11 @@ const About = () => {
           <tr>
             <th className="cell w-1/4">Specific Photo</th>
             <td className="cell">
-              <code>/api/photo/[id]</code>
+              <code>
+                <Link href="https://ub-campus-photography.vercel.app/api/photo/64a31613b99255ec85215a98">
+                  /api/photo/[id]
+                </Link>
+              </code>
             </td>
           </tr>
         </thead>
@@ -66,7 +70,11 @@ const About = () => {
           <tr>
             <th className="cell w-1/4">Random Photo</th>
             <td className="cell">
-              <code>/api/photo/random</code>
+              <code>
+                <Link href="https://ub-campus-photography.vercel.app/api/photo/random">
+                  /api/photo/random
+                </Link>
+              </code>
             </td>
           </tr>
         </tbody>

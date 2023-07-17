@@ -41,7 +41,7 @@ p {
 }
 
 code {
-  @apply bg-ub-purple-100 px-2 font-jetbrains text-sm text-ub-purple-800;
+  @apply bg-ub-purple-100 px-2 font-jetbrains text-sm text-ub-purple-800 hover:bg-ub-yellow-300;
 }
 
 .portrait {
