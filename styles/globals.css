@@ -48,6 +48,10 @@ code {
   @apply mx-auto border-2 border-emerald-400 shadow-md sm:float-left sm:mr-5;
 }
 
+.error-alert {
+  @apply text-center bg-red-200 text-red-800 py-5 mb-3;
+}
+
 /* Navigation Bar */
 
 .nav-section {
