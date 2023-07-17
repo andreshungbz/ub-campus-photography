@@ -50,8 +50,8 @@ const About = () => {
       </p>
       <p>
         API Endpoints are available for fetching a specific photo or a random
-        photo. Send an HTTP GET request to the following endpoints after the
-        hostname. Returned is a response with JSON.
+        photo. Send an HTTP GET request to the following endpoints. Returned is
+        a response with JSON.
       </p>
       <table className="my-3 table">
         <thead>
