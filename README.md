@@ -42,13 +42,11 @@ Below is a list of the folders and files I mainly worked on and a brief explanat
   - `/about/page.jsx` - the about page with project information.
   - `/api` - Next.js folder for api endpoint route handlers.
     - `/auth/[...nextauth]/route.js` - authentication route handler for NextAuth.js, configured for Google account sign ins and the creation of the new user entries in the database and storing session. Also exports options for `getServerSession` function for verifying session in other route handlers.
-    - `/photo/route.js` - route handler for retrieving all photo entries from the database.
     - `/photo/[id]/route.js` - route handler for retrieving or deleting a specific photo using its database ID.
     - `/photo/new/route.js` - route handler for handling upload form input, creating a new entry in the database for a photo.
     - `/photo/random/route.js` - route handler for retrieving a random photo from the database.
-    - `/profile/[id]/route.js` - route handler for retrieving a specific user and their information using its database ID.
-  - `/photo/[id]/page.jsx` - dynamic route for photo pages, displaying a photo and its details based on the database ID.
-  - `/profile/[id]/page.jsx` - dynamic route for profile pages, displaying a user's gallery of images based on the database ID.
+  - `/photo/[id]/page.jsx` - dynamic route server component for photo pages, displaying a photo and its details based on the database ID.
+  - `/profile/[id]/page.jsx` - dynamic route server component for profile pages, displaying a user's gallery of images based on the database ID.
   - `/upload/page.jsx` - the upload page with a form for signed in users to upload photos.
   - `/favicon.ico` - site icon.
   - `/layout.jsx` - the common website layout template, containing the header, footer and session provider for every other page.
@@ -57,22 +55,23 @@ Below is a list of the folders and files I mainly worked on and a brief explanat
   - `/page.jsx` - the home page, corresponding to `/`.
   - `robots.txt` - basic `robots.txt` for search engine crawlers. No current private routes.
 - `/components` - folder for reusable React components.
+  - `/Delete.jsx` - client component for deleting photos
   - `/Footer.jsx` - footer component containing links.
   - `/Form.jsx` - form component for uploading photos. sends a request to `/api/photo/new/`.
-  - `/Gallery.jsx` - gallery component that fetches all photos from `/api/photo/`, filters them based on user if necessary, and displays them in a CSS grid.
+  - `/Gallery.jsx` - gallery server component that fetches all photos, filters them based on user if necessary, and displays them in a CSS grid.
   - `/Header.jsx` - header component containing site logo and Nav component.
   - `/Nav.jsx` - navigation bar component for user sign ins, with additional dropdown options for signed in users. Also contains a button for fetching a random photo database ID and pushing to the corresponding photo page.
-  - `/Photo.jsx` - photo component for displaying a photo and its information, containing a delete button for signed in users whose database ID matches that of the photo's uploader ID.
-  - `/Profile.jsx` - profile component for displaying a user's profile page and gallery of their photos. Fetches user information from `/api/profile/[id]`.
   - `/Provider.jsx` - session provider component for NextAuth to enable session throughout entire website in `/app/layout.jsx`.
 - `/models` - folder for Mongoose schemas and models.
   - `/photo.js` - schema and model for photos in the database with an uploader field which links to the users database.
   - `/user.js` - schema and model for users in the database.
 - `/public/assets/images` - contains site logo and portrait drawing.
 - `/styles/globals.css` - contains all styling classes created from applying Tailwind CSS utility classes. Is linked in `/app/layout.jsx` to enable global use in all other pages and components.
-- `/utils/database.js` - utility function for connecting to MongoDB Atlas cluster database.
+- `/utils` - utility functions.
+  - `/database.js` - function for connecting to MongoDB Atlas cluster database.
+  - `/revalidate.js` - server action for ensuring cache is revalidated (workaround).
 - `/LICENSE` - contains licensing information and attributions for favicon graphic.
-- `/next.config.js` - contains additional configuration to allow for online Imgur images to work.
+- `/next.config.js` - contains additional configuration to allow for online Imgur images to work and for experimental server actions.
 - `/package.json` - Node.js package information and list of dependencies.
 - `/tailwind.config.js` - custom extended configuration for Tailwind CSS, containing custom color schemes and custom font.
 
@@ -143,6 +142,7 @@ Throughout working on this project, there were notable moments of progress!
 - Utilizing the [ExifReader](https://github.com/mattiasw/ExifReader) JavaScript library for extracting exif data from images. While the only thing I do extract is the device model, it is a very cool detail.
 - Using the NextAuth [getServerSession](https://next-auth.js.org/configuration/nextjs#getserversession) function to secure the API routes for uploading photos and deleting them. A security flaw I almost conceded arose from the way I used the database IDs for publicly available profile pages and photo pages, which made it particularly easy to craft a request in Postman that could delete anyone's photo without signing in. However, those routes now check for the existence of a valid session, else returning a 403 Unauthorized error.
 - The usage of every other technology, be it Next.js, React, or Tailwind CSS. This is the first time I've worked on a large project what wasn't based on a problem set specification or online course exercise constraints.
+- Post CS50 submission improvements, including bugfixes (refreshing initial load), error handling (MissingSchemaError), and performance improvements (refactoring into server components).
 
 ## Extra Project Scope Ideas
 
@@ -151,7 +151,6 @@ These are the ideas and features I decided to leave out of this project's scope,
 - As it stands, proper content moderation of uploaded images is relegated to just an email link where I would manually have to delete the photo from the database. Something along the lines of a secondary database for reviewing photos before approval to the main database can work great against the hypothetical malicious actor. It would be more restrictive but safer.
 - Implementing account types of admin and user accounts. It would mostly be myself as the administrator, and making such that I can delete any photo would make it easier than going into the database itself. Another database can also be used for managing and displaying reports rather than just the current email link.
 - Concurrent traditional user account sign up along with Google sign ins. Personally I never like using the Google sign in option when I sign up for websites although after this project I've gotten a greater appreciation for the simplicity and security it offers. For a simple username and password account system, I could implement encryption measures for verifying users.
-- Restricting sign ins to University of Belize school emails. It would fit in the theme of the project and also discourage malicious actors.
 - Set up a custom domain name on the Vercel deployment.
 
 ## Thanks
