@@ -27,10 +27,9 @@ const handler = NextAuth({
     // define signIn callback for creating a database entry for user
     async signIn({ profile }) {
       try {
-        // restrict sign ins to ub.edu.bz domain
-        // if (!profile.email.endsWith('@ub.edu.bz')) {
-        //   return false;
-        // }
+        if (!profile.email.endsWith('@ub.edu.bz')) {
+          return false;
+        }
 
         // establish connection to database
         await connectMongoDB();
