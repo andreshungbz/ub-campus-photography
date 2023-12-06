@@ -126,14 +126,6 @@ You **must** provide your own variables in a `.env` in the root folder containin
 
 The project on Google Cloud Console must be properly configured for OAuth, with the authorized JavaScript origin being website or `http://localhost:3000` and the authorized redirect URI being the same website appended with `/api/auth/callback/google` or `http://localhost:3000/api/auth/callback/google`.
 
-## Known Issues
-
-- Some photos uploaded via the form will return a 500 error for an unknown reason.
-- When you delete a photo, if your connection is interrupted midway, the photo will be deleted from the database but not from the Imgur album. However, this problem does not affect the functionality of the web application, as it does not rely on the Imgur album for fetching photos.
-- The Imgur API Access Token has an expiry date of 30 days. It can be easily refreshed but it means that the environment variable must be updated as to allow for create and delete operations of images, as the project is dependent on Imgur links for images.
-- The free tier of the Imgur API is used in this project, which means that large-scale traffic of the web application can cause that limit to be exceeded, stopping normal functionality.
-- Usage of free tiers in MongoDB Atlas cluster and Vercel deployment may mean that the performance may not be the absolute best (I'm cheap ok).
-
 ## Personal Project Highlights
 
 Throughout working on this project, there were notable moments of progress!
